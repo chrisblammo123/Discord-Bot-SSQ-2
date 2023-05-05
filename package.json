@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "discord.js": "^14.10.2",
+    "ssq": "^0.0.1"
+  },
+  "name": "discord-bot-ssq-2",
+  "description": "byeahg",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisblammo123/Discord-Bot-SSQ-2.git"
+  },
+  "author": "Chris Struck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisblammo123/Discord-Bot-SSQ-2/issues"
+  },
+  "homepage": "https://github.com/chrisblammo123/Discord-Bot-SSQ-2#readme"
+}
