@@ -19,6 +19,31 @@ const config = require('./config.json');			// Info relating to the bot configura
 // ssq.set_timeout(2000);
 
 
+// Define Wrapper Functions
+
+/**
+ * Object returned by ssq.players()
+ * @typedef {Object} PlayerInfo
+ * @property {number} index Always 0 (from what I can tell)
+ * @property {string} name Username of the player
+ * @property {number} score Player score (integer)
+ * @property {number} duration Time on the server in seconds (float)
+ */
+
+/**
+ * Returns array of PlayerInfo objects
+ * @param {string} [ip = serverinfo.serverip] Server ip
+ * @param {number} [port = serverinfo.serverport] Server port
+ * @return {PlayerInfo[]} Array of PlayerInfo objects
+ */
+getPlayerList = (ip = serverinfo.serverip, port = serverinfo.serverport) => {
+	ssq.players(ip, port, (err, data) => {
+		console.log('Pinging server ...\n' + data)
+		console.log(data[1])
+		console.error(err)
+	});
+}
+
 // Main
 switch('players')
 {
@@ -33,13 +58,17 @@ switch('players')
 	case 'status':
 		ssq.info(serverinfo.serverip, serverinfo.serverport, (err, data) => {
 			console.log('Pinging server ...\n' + data)
-			console.error(err)
+			// TODO: FIX this fucking thing whats wrong with it
+			console.log(data[servername])		// This shit keeps returning as undefined
+			// console.error(err)
 		});
 		break;
 	case 'players':
 	case 'playerlist':
+		
 		ssq.players(serverinfo.serverip, serverinfo.serverport, (err, data) => {
 			console.log('Pinging server ...\n' + data)
+			console.log(data[1])
 			console.error(err)
 		});
 		break;
