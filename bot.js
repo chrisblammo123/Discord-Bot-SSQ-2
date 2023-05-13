@@ -7,6 +7,7 @@
 // Variables
 
 const ssq = require('ssq');					// Interfaces with Source servers
+const ssqfix = require('ssq-fix');			// My test node-ssq fix
 // const Discord = require('discord.js');				// Discord bot API
 // const client = new Discord.Client();				// Discord bot client
 
@@ -44,8 +45,12 @@ getPlayerList = (ip = serverinfo.serverip, port = serverinfo.serverport) => {
 	});
 }
 
+
+
+
+
 // Main
-switch('players')
+switch('status')
 {
 	case 'test':
 	case 'ping':
@@ -56,16 +61,16 @@ switch('players')
 		break;
 	case 'server':
 	case 'status':
-		ssq.info(serverinfo.serverip, serverinfo.serverport, (err, data) => {
+		ssqfix.info(serverinfo.serverip, serverinfo.serverport, (err, data) => {
 			console.log('Pinging server ...\n' + data)
 			// TODO: FIX this fucking thing whats wrong with it
-			console.log(data[servername])		// This shit keeps returning as undefined
-			// console.error(err)
+			console.log(data)		// This shit keeps returning as undefined
+			console.error(err)
 		});
 		break;
 	case 'players':
 	case 'playerlist':
-		
+		// will probably get rid of this and use wrapper, will make it cleaner and I might remove index, it seems useless
 		ssq.players(serverinfo.serverip, serverinfo.serverport, (err, data) => {
 			console.log('Pinging server ...\n' + data)
 			console.log(data[1])
